@@ -9,6 +9,11 @@ public class CqHotApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(CqHotApplication.class, args);
 	}
+	
+	public String login() {
+		
+		return "success";
+	}
 
 }
 
