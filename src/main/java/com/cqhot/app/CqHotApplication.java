@@ -11,7 +11,7 @@ public class CqHotApplication {
 	}
 	
 	public String login() {
-		return "success:one";
+		return "success:qaq";
 	}
 
 }
