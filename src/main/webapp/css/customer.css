@@ -1,0 +1,323 @@
+
+.input-group {
+            display: inline-table;
+            width: 150px;
+        }
+
+.validateColor{
+                background-color: #ed5565 !important;
+            }
+
+.visa a,.visa i,.visa span{
+            padding:5px;
+            border-bottom: 1px solid #eee;
+            display: block;
+            margin-left: -8px;
+            margin-right: -8px;
+        }
+        .visa a:last-child, .visa i:last-child, .visa span:last-child{
+            border-bottom: 0px;
+        }
+        [class^="icon-"], [class^="icol-"], [class^="icos-"], [class*=" icon-"], [class*=" icol-"], [class*=" icos-"]{
+            line-height: inherit !important;
+        }
+        .bs-checkbox{
+            vertical-align: middle !important;
+        }
+
+#editor {
+	max-height: 450px;
+	height: 450px;
+	background-color: white;
+	border-collapse: separate;
+	border: 1px solid rgb(204, 204, 204);
+	padding: 4px;
+	box-sizing: content-box;
+	-webkit-box-shadow: rgba(0, 0, 0, 0.0745098) 0px 1px 1px 0px inset;
+	box-shadow: rgba(0, 0, 0, 0.0745098) 0px 1px 1px 0px inset;
+	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3px;
+	border-bottom-left-radius: 3px;
+	border-top-left-radius: 3px;
+	overflow: scroll;
+	outline: none;
+}
+
+.btn-toolbar {
+	font-size: 0;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+html, body, .container {
+    height: 100%;
+    width: 100%;
+}
+
+table tfoot {
+    background-color: rgb(195, 255, 193);
+}
+table tfoot tr td{
+    font-weight: bold;
+    border:1px solid #eee;
+    text-align: center;
+}
+
+
+.page-header {
+    padding-bottom: 0px !important;
+}
+
+.modal-content {
+    border: 0px;
+}
+
+.modal-header {
+    padding: 8px;
+    margin-top: 2px;
+}
+
+/*jquery-ui classname��ui-datepicker�����Զ��彫�����ؼ���������*/
+.ui-datepicker {
+    z-index: 1060 !important;
+}
+
+.page-title {
+    padding-bottom: 5px !important;
+}
+
+.pagination {
+    margin: 10px auto 10px 0px;
+}
+
+.btn-toolbar {
+    margin-bottom: 10px;
+}
+
+.table_fixed {
+    table-layout: fixed;
+}
+
+.table_fixed > thead > tr > th, .table_fixed > tr > th {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.table_fixed > tbody > tr > td, .table_fixed > tr > td {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.table_nowrap > thead > tr > th, .table_fixed > tr > th {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.table_nowrap > tbody > tr > td, .table_fixed > tr > td {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.table-clear-bordered {
+    border: none;
+}
+
+.table-clear-bordered > thead > tr > th, .table-clear-bordered > tr > th {
+    border: none;
+}
+
+.table-clear-bordered > tbody > tr > td, .table-clear-bordered > tr > td {
+    border: none;
+}
+
+.clear_default_padding {
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+}
+
+.clear_default_margin {
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+}
+
+.clear_default_h_padding {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+
+.clear_default_h_margin {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+}
+
+.list-inline > li {
+    float: left;
+    /* padding: 4px 10px 4px 0px; */
+}
+
+.list-unstyled > li {
+    padding-bottom: 2px;
+    padding-top: 2px;
+}
+
+.tab-pane .form-horizontal .form-group {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+}
+
+/*role-rights*/
+.list-nostyled {
+    list-style: none;
+}
+
+.list-title {
+    line-height: 35px;
+}
+
+.list-Level-first {
+    padding-left: 0px;
+}
+
+.list-first-checkbox {
+    padding-left: 15px;
+    padding-bottom: 7px;
+    padding-top: 10px;
+    margin: 0px;
+    background-color: #e0e0e0;
+}
+
+.list-Level-second {
+    padding-left: 5px;
+}
+
+.list-second-checkbox {
+    padding-left: 15px;
+    padding-bottom: 7px;
+    padding-top: 10px;
+    margin: 0px;
+    background-color: #e7e7e7;
+}
+
+.list-second-checkbox > label {
+    margin-bottom: 0px;
+}
+
+.list-level-third {
+    padding-left: 10px;
+}
+
+.list-third-checkbox {
+    padding-left: 25px;
+    padding-bottom: 7px;
+    padding-top: 10px;
+    margin: 0px;
+    background-color: #eeeeee;
+}
+
+.list-third-checkbox > label {
+    margin-bottom: 0px;
+}
+
+.list-level-fourth {
+    padding-left: 25px;
+}
+
+.list-fourth-checkbox {
+    padding-left: 25px;
+    padding-bottom: 7px;
+    padding-top: 10px;
+    margin: 0px;
+    /*background-color:#e1edf7 ;*/
+}
+
+.list-fourth-checkbox > label {
+    margin-bottom: 0px;
+}
+
+.list-fourth-checkbox > .note {
+    margin-left: 50px;
+}
+
+.clear-input-readonly {
+    cursor: default !important;
+    background-color: White !important;
+    color: #555 !important;
+}
+
+/*�ɱ���������״̬*/
+.approval_status {
+
+}
+
+.approval_status:hover,
+.approval_status:active,
+.approval_status:visited,
+.approval_status:focus {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.approval_status .icon-ok-circle {
+    color: green;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+.approval_status .icon-disabled {
+    color: grey;
+}
+
+.approval_status .icon-remove-circle {
+    color: red;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+.icon-ok-circle, .icon-ok {
+    color: green;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+.icon-disabled {
+    color: grey;
+}
+
+.icon-remove-circle, .icon-remove {
+    color: red;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+/**/
+.mandatory {
+    color: red;
+}
+
+.panel-custom {
+    border-bottom: 1px solid #eee;
+    padding-top: 20px;
+    padding-bottom: 20px
+}
+
+/* slidebar Styles  */
+/*
+.navbar{
+	background-color: #4f565a;  
+	border-bottom-color: #9ea2a5;
+}
+*/
+/*
+#slidebar{
+	background-color: #24303a;
+}
+
+*/
+
+
+
+

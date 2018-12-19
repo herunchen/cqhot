@@ -1,0 +1,41 @@
+.upselect{ clear:both; margin:10px auto auto 10px; }
+.upselect dl dt,.upselect dl dd{ float:left; line-height:200%; }
+.swfupload{vertical-align:middle;}
+.upload_btn{ 
+    /*display:inline; padding:4px 0 3px 5px; *padding:0 0 0 5px; border:1px solid #d7d7d7; background:url(/Images/front/admin/icon.png) no-repeat 0px -160px; color: #707070; cursor:pointer; overflow:hidden; vertical-align:middle;*/ 
+    background:url(../../images/icon.png) no-repeat 0 -159px; 
+    width:90px; height:30px; line-height:30px; 
+    text-align:center;border:none; color:#ffffff;vertical-align:middle;
+    display:inline-block;*padding:0 0 0 5px;
+}
+.upselect dl dd label{margin-left:10px;padding:7px 0 0; color:#717171; line-height:200%;}
+/*.pic img{border:3px #efefed solid; cursor:pointer; width:100px; height:100px;}
+.pic img.current{border:3px #f60 solid}*/
+
+#show_list{margin:0; padding:0; overflow:hidden;}
+#show_list ul{ margin:0; list-style:none;overflow:hidden; }
+#show_list ul li{ float:left; margin-right:10px; text-align:center; *width:111px;clear:none;}
+#show_list ul li .img_box{ margin:5px 5px 5px auto; position:relative; width:200px; height:150px; overflow:hidden; border:3px #efefed solid; cursor:pointer; }
+#show_list ul li .img_box.current{ border:3px #f60 solid }
+#show_list ul li .img_box img{ width:200px; height:150px; opacity:1; }
+/* #show_list ul li .img_box .remark{ top:80px; left:0px; margin:0; padding:3px 2px; position:absolute; display:block; width:96px; height:94px; overflow:hidden; background:#000; filter:alpha(opacity=50); opacity:0.5; -moz-opacity:0.5; text-align:left; font-family:"Î¢ÈíÑÅºÚ"; }
+#show_list ul li .img_box .remark:hover{ top:0px; }
+#show_list ul li .img_box .remark i{ color:#fff; font-style:normal; position:relative; line-height:16px; } */
+#show_list ul li a{ padding-right:1em; }
+
+/*2012-3-2ÐÂÔö*/
+.photo_list2{border:1px solid #EDECFF; font-family:Verdana, Geneva, sans-serif;overflow:hidden;}
+.photo_list2 ul{margin:0;padding:10px 0 0 10px; *padding:10px 0 0 0px;}
+.photo_list2 ul li{float:left; padding:0 0 10px 0; width:50%; *width:49.99%; overflow:hidden;}
+.photo_list2 ul li div.box{ margin:0 10px 0 0; position:relative; border:3px solid #e3f2fa; background:url(li_bg.gif) repeat-x left bottom #fff; *margin:0 5px;}
+.photo_list2 ul li div.box .checkall input{ position:absolute; top:5px; right:0px; }
+.photo_list2 ul li img.cover{ float:left; margin:10px; padding:0px; border:0; width:96px; height:96px; }
+.photo_list2 ul li dl{margin:0; padding:0 10px 0 0; *float:left; *margin-right:10px;}
+.photo_list2 ul li dl dt{ margin:8px 0 0 auto; padding-right:15px; line-height:18px;height:36px;color:#208FFF;font-weight:600;overflow:hidden;}
+.photo_list2 ul li dl dd{line-height:18px; color:#999;}
+.photo_list2 ul li dl dd.btns{line-height:30px; height:30px; font-size:13px;font-family:"Î¢ÈíÑÅºÚ";}
+.photo_list2 ul li dl dd input{vertical-align:middle;}
+
+.page_box{line-height:30px;height:30px;}
+.page_box .left{ font-family:"Î¢ÈíÑÅºÚ";}
+.page_box .left input{ margin:auto 3px; width:30px; text-align:center; }

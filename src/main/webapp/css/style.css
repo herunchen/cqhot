@@ -1,0 +1,16 @@
+/* body{font-family:"Microsoft YaHei",Arial,Helvetica,sans-serif,"宋体";} */
+/* 红色 */
+.red{color:#FF0000;}
+/* 分页样式 */
+.ye{height:30px; float:right; padding-right:50px; position:relative; paddin-top:10px;font-size:14px; margin-top:10px;}
+.ye a:link,.ye a:visited{ color:#337ab7;}
+
+.hide{display:none !important;}
+
+.top { margin-top: 20px; }
+.bottom { margin-bottom: 20px; }
+
+.data-list th{text-align:center;}
+.data-list td{text-align:left;}
+.table tbody tr td{vertical-align:middle;}
+.table,.table .btn {font-size:12px;}

@@ -1,0 +1,16 @@
+.input-group-addon:first-child {
+    width: 80px;
+}
+
+.input-group-addon:last-child {
+    width: 80px;
+}
+
+.input-group-addon-right {
+    background-color: white !important;
+    border-left: 1px solid #ccc !important;
+}
+
+.list-inline > li {
+
+}

@@ -1,0 +1,11 @@
+/* .login-background{padding:50px 0 15%;} */
+/* .login-panel{width:50%;} */
+.login-panel .form-group{padding:50px 0 5px;}
+.login-panel,.login-panel .form-group{display:table;margin-left:auto;margin-right:auto;}
+.login-panel .form-panel{padding-top:45px;}
+.login-panel .form-group .input-block{padding:11px 0;}
+.login-panel .form-group .input-block .form-control{color:#777;height:37px;border:1px solid #939393;}
+.transform{text-transform:lowercase;}
+.login-panel .form-group .check-block .register-user{padding-left:0;padding-right:0;text-align:right;padding-top:10px;}
+.login-panel .form-group .check-block .register-user a{color:#f58a00;font-size:14px;}
+/* .login-panel .login-button{margin-top:10px;} */

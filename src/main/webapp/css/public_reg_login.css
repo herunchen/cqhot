@@ -1,0 +1,11 @@
+body{font-family:"Microsoft YaHei",Arial,Helvetica,sans-serif,"ËÎÌå";}
+/* ×¢²á-µÇÂ¼ */
+header{height:108px;font-size:14px;color:#ef8614;}
+.navbar{height:108px;background-repeat:no-repeat;box-shadow:0 0 5px #999;opacity:0.9;border-radius:0;background-image:linear-gradient(#fff, #fff 60%, #fff);}
+.d-navbar{border-width:0;background-color:#fff;}
+
+.main-background{background-color:#C7D7F1;background-size:100% auto;padding:50px 0 15%;}
+.public-panel{background-color:#fff;opacity:.95;border-radius:10px;position:relative;padding:0 80px 20px;margin:auto;width:60%;}
+/* .register-panel .form-group .input-block .has-feedback,.login-panel .form-group .input-block .has-feedback{padding-right:0;} */
+.public-panel .form-group .input-block .has-feedback{padding-right:0;}
+.btn-common{background:#fa0;color:#fff;,margin-top:10px;font-size:24px;}

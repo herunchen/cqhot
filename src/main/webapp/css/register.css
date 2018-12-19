@@ -1,0 +1,16 @@
+/* зЂВс */
+/* .register-background{padding:40px 0 5%;} */
+/* .register-panel{margin:auto;width:65%;} */
+.register-panel .form-group{padding:5px 0;}
+.register-panel .form-panel{padding-top:42px;}
+.register-panel .form-group .input-block{padding:0 0 15px;}
+.register-panel .form-group .captcha-block{padding-bottom:12px;}
+.register-panel .form-group .captcha-block .captcha-btn{padding-top:40px;}
+/* .register-button{margin-top:10px;font-size:24px;} */
+.captcha-image{cursor:pointer;}
+
+
+.has-success .form-control-feedback{color:#3c763d;}
+.has-error .form-control-feedback{color:#a94442;}
+
+.form-horizontal .has-feedback .form-control-feedback{right:0px;}
