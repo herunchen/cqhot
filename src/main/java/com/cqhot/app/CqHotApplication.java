@@ -3,6 +3,7 @@ package com.cqhot.app;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+
 @SpringBootApplication
 public class CqHotApplication {
 
@@ -10,9 +11,5 @@ public class CqHotApplication {
 		SpringApplication.run(CqHotApplication.class, args);
 	}
 	
-	public String login() {
-		return "success:qaasdsaq";
-	}
-
 }
 
