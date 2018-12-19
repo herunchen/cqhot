@@ -66,6 +66,6 @@
 			</form>
 		</div>
 	</div>
-	<script type="text/javascript" src="<%=basePath%>/js/register.js"></script>
+	<script type="text/javascript" src="js/register.js"></script>
 </body>
 </html>
