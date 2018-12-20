@@ -101,7 +101,7 @@
 	<script>
 		
 	</script>
-	<title>TPMS旅游管理系统</title>
+	<title>CQHot旅游管理系统</title>
 	<!-- 导入当前页面的css样式 -->
 	<link href="/css/dash-board.css" rel="stylesheet" type="text/css"/>
 </head>

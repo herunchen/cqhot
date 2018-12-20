@@ -5,7 +5,7 @@ var basePath = "/";
 	//获取一级菜单
 	$(document).ready(
 		function() {
-			getAjax(basePath+"userLogin/getUserMenu.do", "parentId=&level=1&userId="+ "",
+			getAjax("/getMenu", "parentId=&level=1",
 				function(data) {
 					var fristTag = "false";
 					for ( var key in data) {
@@ -30,7 +30,6 @@ var basePath = "/";
 						li.append(a);
 						$(".navbar-left").append(li);
 					}
-
 				}, "get");
 		});
 	
@@ -38,8 +37,8 @@ var basePath = "/";
 	function getChild(parentId) {
 		$("#sidebar-content").html("");
 		getAjax(
-				basePath+"userLogin/getUserMenu.do",
-				"parentId="+parentId+"&level=2&userId="+ "",
+				basePath+"/getMenu",
+				"parentId="+parentId+"&level=2",
 				function(data) {
 					var temp = "false";
 					for ( var key in data) {
@@ -104,14 +103,14 @@ var basePath = "/";
 	<div class="container">
 		<ul class="nav navbar-nav">
 			<li class="nav-toggle"><a href="javascript:void(0);" title="">
-					<i class="icon-reorder"> </i>
+					<i class="icon-reorder"></i>
 			</a></li>
+			
 		</ul>
 
 		<a class="navbar-brand" href="index.do"> <img src="/img/laipao8_logo_66x17.png" alt="logo" /> <strong> 旅游管理系统 </strong> </a>
 		<a href="javascript:void(0);" class="toggle-sidebar bs-tooltip" data-placement="bottom" data-original-title="显示/隐藏菜单"> <i class="icon-reorder"> </i></a>
-		<ul class="nav navbar-nav navbar-left hidden-xs hidden-sm"
-			id="topMenu">
+		<ul class="nav navbar-nav navbar-left hidden-xs hidden-sm" id="topMenu">
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
 			<li class="dropdown hidden-xs hidden-sm">
