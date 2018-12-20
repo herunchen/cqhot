@@ -145,7 +145,7 @@
 			<li class="dropdown user">
 			    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 			        <i class="icon-male"> </i>
-			            <span class="username"> ${sessionScope.currentUser.name }</span>
+			            <span class="username"> ${sessionScope.user.name }</span>
 			        <i class="icon-caret-down small"> </i>
 			    </a>
 				<ul class="dropdown-menu">

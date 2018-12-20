@@ -8,13 +8,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" />
 <%@ include file="include/front_inc.jsp"%>
 
-<link href="<%=basePath%>/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-<link href="<%=basePath%>/assets/css/main.css" rel="stylesheet" type="text/css" />
-<link href="<%=basePath%>/assets/css/plugins.css" rel="stylesheet" type="text/css" />
-<link href="<%=basePath%>/assets/css/responsive.css" rel="stylesheet" type="text/css" />
-<link href="<%=basePath%>/assets/css/icons.css" rel="stylesheet" type="text/css" />
-<link href="<%=basePath%>/assets/css/login.css" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" href="<%=basePath%>/assets/css/fontawesome/font-awesome.min.css">
+<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="/assets/css/main.css" rel="stylesheet" type="text/css" />
+<link href="/assets/css/plugins.css" rel="stylesheet" type="text/css" />
+<link href="/assets/css/responsive.css" rel="stylesheet" type="text/css" />
+<link href="/assets/css/icons.css" rel="stylesheet" type="text/css" />
+<link href="/assets/css/login.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="/assets/css/fontawesome/font-awesome.min.css">
 <!--[if IE 7]>
     <link rel="stylesheet" href="assets/css/fontawesome/font-awesome-ie7.min.css">
 <![endif]-->
@@ -22,9 +22,9 @@
     <link href="assets/css/ie8.css" rel="stylesheet" type="text/css"/>
 <![endif]-->
 
-<script type="<%=basePath%>/text/javascript" src="assets/js/libs/jquery-1.10.2.min.js"></script>
-<script type="<%=basePath%>/text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
-<script type="<%=basePath%>/text/javascript" src="assets/js/libs/lodash.compat.min.js"></script>
+<script type="/text/javascript" src="assets/js/libs/jquery-1.10.2.min.js"></script>
+<script type="/text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+<script type="/text/javascript" src="assets/js/libs/lodash.compat.min.js"></script>
 <!--[if lt IE 9]>
     <script src="assets/js/libs/html5shiv.js"></script>
 <![endif]-->
@@ -69,7 +69,7 @@ body {
 	</div>
 	<div class="box">
 		<div class="content">
-			<form method="post" action="toLogin.do"
+			<form method="post" action="/login"
 				class="form-vertical login-form" name="loginForm" id="loginForm">
 				<h3 class="form-title" style="color: white;">登 录</h3>
 
@@ -86,7 +86,7 @@ body {
 							name="password" class="form-control" placeholder="密码" />
 					</div>
 				</div>
-				<span id="login_msg" style="color: red"></span>
+				<span id="login_msg" style="color: red">${errorMsg}</span>
 
 
 
@@ -129,10 +129,6 @@ body {
 			//setCookie('cookUser', inUser, time, '/');//set 获取用户名和密码 传给cookie
 			//setCookie('cookPass', inPass, time, '/');
 
-			if (!isExistUser($("#username").val(), $("#password").val())) {
-				$('#login_msg').empty().append("用户名或密码错误");
-				return;
-			}
 			$("#loginForm").submit();
 		})
 		//回车按钮
@@ -161,58 +157,7 @@ body {
 		} else
 			return ""; //搜索失败，返回空字符串   
 	}
-	/*
-	 * 检验用户名是否正确
-	 */
-	function checkusername() {
-		$('#login_msg').empty();
-		var name = $("#username").val();
-		if (name == '') {
-			$('#username_msg').empty().append("账号不能为空");
-			return false;
-		}
-		var reg = /^\w{3,20}$/;
-		if (reg.test(name)) {
-			$('#username_msg').empty();
-			return true;
-		} else {
-			$('#username_msg').empty().append("请输入3~20字符");
-			return false;
-		}
-		if ($("#password").val() != '' && $("#username").val() != '') {
-			document.getElementById("btnLogin").enable = "true";
-		} else {
-			document.getElementById("btnLogin").enable = "false";
-		}
 
-	}
-
-	/*
-	 * 检验密码是否正确
-	 */
-	function checkPassword() {
-		$('#login_msg').empty();
-		var password = $("#password").val();
-		if (password == '') {
-			$("#password_msg").empty().append("密码不能为空");
-			return false;
-		}
-
-		var reg = /^\w{6,20}$/;
-		if (reg.test(password)) {
-			$('#password_msg').empty();
-			return true;
-		} else {
-			$('#password_msg').empty().append("请输入8~20字符");
-			return false;
-		}
-		if ($("#password").val() != '' && $("#username").val() != '') {
-			document.getElementById("btnLogin").enable = "true";
-		} else {
-			document.getElementById("btnLogin").enable = "false";
-		}
-
-	}
 	//设置Cookie保存时间
 	var time = 0;
 	$(document).ready(function() {
