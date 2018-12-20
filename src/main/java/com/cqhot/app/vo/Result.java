@@ -1,0 +1,36 @@
+package com.cqhot.app.vo;
+
+import java.io.Serializable;
+
+public class Result implements Serializable{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2652022933638818208L;
+	
+	private int status;
+	private String message;
+	private Object data;
+	
+	public int getStatus() {
+		return status;
+	}
+	public void setStatus(int status) {
+		this.status = status;
+	}
+	public String getMessage() {
+		return message;
+	}
+	public void setMessage(String message) {
+		this.message = message;
+	}
+	public Object getData() {
+		return data;
+	}
+	public void setData(Object data) {
+		this.data = data;
+	}
+	
+	
+}
