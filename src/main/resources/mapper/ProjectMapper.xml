@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cqhot.app.dao.ProjectMapper">
+	<select id="findProByPage" resultType="map">
+		SELECT
+			p.id,
+		    p.prjId,
+		    p.prjName,
+		    p.deptId,
+		    o.name,
+		    p.beginDate,
+		    p.endDate,
+		    p.valid,
+		    p.note,
+		    p.createdUser,
+		    p.createdTime,
+		    p.modifiedUser,
+		    p.modifiedTime
+		FROM
+		    product_projects  p join aut_organizations  o on  p.deptId=o.id
+		<where>
+		   1=1
+            <!-- 项目编号 -->
+			<if test="null != project.prjId and  project.prjId!=''">
+				AND p.prjId like CONCAT('%',#{project.prjId},'%')
+			</if>
+            <!-- 项目名称 -->
+			<if test="null != project.prjName and  project.prjName!=''">
+				AND p.prjName like CONCAT('%',#{project.prjName},'%')
+			</if>
+            <!-- 归属部门-->
+			<if test="null != project.deptId and project.deptId !=''">
+				AND p.deptId = #{project.deptId}
+			</if>
+            <!-- 状态 -->
+            <if test="null != project.valid and project.valid!='' ">
+                AND p.valid = #{project.valid}
+            </if>
+			<!-- 起始日期 -->
+            <if test="null != project.beginDate and project.beginDate!=''">
+				<![CDATA[
+				AND DATE_FORMAT(p.beginDate,'%Y-%m-%d') >= DATE_FORMAT(#{project.beginDate},'%Y-%m-%d')
+				]]>
+			</if>
+			<!-- 结束日期 -->
+			<if test="null != project.endDate and project.endDate!=''">
+				<![CDATA[
+				AND DATE_FORMAT(p.endDate,'%Y-%m-%d') <= DATE_FORMAT(#{project.endDate},'%Y-%m-%d')
+				]]>
+			</if>
+		
+		</where>
+		    ORDER BY  p.createdTime DESC 
+		<if test="page!=null and page.pageSize != 0 and page.pageSize != null">
+			LIMIT #{page.startIndex},#{page.pageSize}
+		</if>
+	</select>
+	
+	<select id="getTotPage" parameterType="com.cqhot.app.entity.Project" resultType="java.lang.Integer">
+		SELECT  count(*)
+		FROM    product_projects  p join aut_organizations o on  p.deptId=o.id
+		<where>
+		    1=1
+            <!-- 项目编号 -->
+			<if test="null != project.prjId and  project.prjId!=''">
+				AND p.prjId like CONCAT('%',#{project.prjId},'%')
+			</if>
+            <!-- 项目名称 -->
+			<if test="null !=project.prjName and  project.prjName!=''">
+				AND p.prjName like CONCAT('%',#{project.prjName},'%')
+			</if>
+            <!-- 归属部门-->
+			<if test="null != project.deptId and project.deptId !=''">
+				AND p.deptId = #{project.deptId}
+			</if>
+            <!-- 状态 -->
+            <if test="null != project.valid and project.valid!='' ">
+                AND p.valid = #{project.valid}
+            </if>
+			<!-- 起始日期 -->
+            <if test="null != project.beginDate and project.beginDate!=''">
+				<![CDATA[
+				AND DATE_FORMAT(p.beginDate,'%Y-%m-%d') >= DATE_FORMAT(#{project.beginDate},'%Y-%m-%d')
+				]]>
+			</if>
+			<!-- 结束日期 -->
+			<if test="null != project.endDate and project.endDate!=null">
+				<![CDATA[
+				AND DATE_FORMAT(p.endDate,'%Y-%m-%d') <= DATE_FORMAT(#{project.endDate},'%Y-%m-%d')
+				]]>
+			</if>
+		</where>
+	</select>
+	
+	<select id= "getAllGroup" resultType="com.cqhot.app.entity.Organ"> 
+		select * from aut_organizations where parentId is not null
+	</select>
+	
+	<update id="updateValid">
+		update product_projects set valid = #{valid} where id = #{prjId}
+	</update>
+	
+	<insert id="addProject" parameterType="com.cqhot.app.entity.Project">
+		INSERT INTO product_projects
+		    (prjId,
+			prjName,
+			deptId,
+			beginDate,
+			endDate,
+			note,
+			createdUser,
+			createdTime,
+			modifiedUser,
+			modifiedTime)
+		VALUES
+		    (#{project.prjId},
+		    #{project.prjName},
+		    #{project.deptId},
+		    #{project.beginDate},
+		    #{project.endDate},
+		    #{project.note},
+		    null,
+		    NOW(),
+		    null,
+		    NOW())
+	</insert>
+	
+	<select id="findProjectById" parameterType="java.lang.String" resultType="com.cqhot.app.entity.Project">
+		select * from product_projects where id = #{id}
+	</select>
+	
+	<update id="updateProject" parameterType="com.cqhot.app.entity.Project">
+		update product_projects 
+		set 
+		prjId=#{p.prjId},
+		prjName = #{p.prjName},
+		deptId=#{p.deptId},
+		beginDate=#{p.beginDate},
+		endDate=#{p.endDate},
+		modifiedTime=NOW(),
+		note=#{p.note}
+		where 
+			id = #{p.id}
+	</update>
+</mapper>
