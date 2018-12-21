@@ -1,8 +1,13 @@
 package com.cqhot.app.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class MessageCenter {
+public class MessageCenter implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4018159507354209757L;
 	/*message_id       信息ID
 	class_type         信息分类
 	Send_user          发送人
