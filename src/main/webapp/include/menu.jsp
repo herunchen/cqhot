@@ -107,24 +107,24 @@
 	/*
 	* 代理用户表单请求，将表单请求转换为 Ajax 请求
 	*/
-// 	function formSubmitAgent(){
-// 		var form=$('#content form');
-// 		console.log(form);
-// 		form.submit(function(){
-// 			var frm = $(this);
-// 			var data = frm.serialize();
-// 			var url = frm.attr('action');
-// 			console.log(data);
-// 			console.log(url);
-// 			//var method = frm.attr('method').toLowerCase();
-// 			$.post(url, data, function(page){
-// 				$('#content').html(page);
-// 				formSubmitAgent();
-// 			}, 'html');
-// 			//$('#content').load(url, data, formSubmitAgent);
-// 			return false;
-// 		});
-// 	}
+	function formSubmitAgent(){
+		var form=$('#content form');
+		console.log(form);
+		form.submit(function(){
+			var frm = $(this);
+			var data = frm.serialize();
+			var url = frm.attr('action');
+			console.log(data);
+			console.log(url);
+			//var method = frm.attr('method').toLowerCase();
+			$.post(url, data, function(page){
+				$('#content').html(page);
+				formSubmitAgent();
+			}, 'html');
+			//$('#content').load(url, data, formSubmitAgent);
+			return false;
+		});
+	}
 	
 </script>
 

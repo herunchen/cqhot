@@ -32,9 +32,9 @@ function doGetProjects(){
 		var params = getQueryParamValues();
 		var currentPage=$('#projectList').data('curPage');
 		if(currentPage){params.PageCurrent = currentPage;}
-		var url =basePath+'project/findProjects.do';
+		var url ='/project/findProByPage';
 		$.post(url,params,function(result){
-			if(result.state==SUCCESS){
+			if(result.status==1){
 				initPage();
 				fillProjectList(result.data.list);
 				//分页
@@ -42,7 +42,7 @@ function doGetProjects(){
 			}else{
 				alert(result.message);
 			}
-		})
+		});
 }
 /*获取查询参数*/
 function getQueryParamValues(){
@@ -116,9 +116,9 @@ function getQueryParamValues(){
 }
 	/*获得组织机构部门列表*/
 	function doGetGroups(){
-		var url = basePath + 'project/findGroups.do';	
+		var url = '/project/getAllGroup';	
 		$.getJSON(url, function(result){
-			if(result.state==SUCCESS){
+			if(result.status==1){
 				doUpdateGroupOptions(result.data);
 			}else{
 				alert(result.message);
@@ -164,20 +164,20 @@ function getQueryParamValues(){
 		if(content=='禁用'){
 			valid = 0;
 		}
-		var url = basePath+"project/validById.do";
+		var url ="/project/updateValid";
 		var param = {'prjId':prjId,'valid':valid};
 		
 		$.post(url,param,function(result){
-			if(result.state == SUCCESS){
+			if(result.status == 1){
 				doGetProjects();
 			}else{
 				alert(result.message);
 			}
-		})
+		});
 	}
 	/*添加项目信息*/
     function showAddProjectDialog(){
-    	$('#modifyDialog .modal-body').load(basePath+'project/addUI.do',function(){
+    	$('#modifyDialog .modal-body').load('ttms/project/project_add.jsp',function(){
 	        $('#modifyDialog').modal('show');
 			$('#modifyDialog .modal-title').html('添加项目信息');
 			
@@ -186,11 +186,11 @@ function getQueryParamValues(){
    /*编辑项目信息*/
     function showEditProjectDialog(){
     	var prjId = $(this).parent().parent().data('id');
-    	$('#modifyDialog .modal-body').load(basePath+'project/editUI.do',function(){
+    	$('#modifyDialog .modal-body').load('ttms/project/project_edit.jsp',function(){
 	        $('#modifyDialog').modal('show');
 			$('#modifyDialog .modal-title').html('编辑项目信息');
 			$('#modifyDialog').data('checkedUpdateId',prjId);
-    	})
+    	});
     }
     
 //分页显示

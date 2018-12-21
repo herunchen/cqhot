@@ -6,9 +6,9 @@ doInitPageData();
 $('#modifyDialog').on('click','.ok',updateProject);
 /*获得组织机构部门列表*/
 function doInitPageData(){
- var url = basePath + 'project/findGroups.do';
+ var url = '/project/getAllGroup';
 	$.getJSON(url, function(result) {
-		if (result.state == SUCCESS) {
+		if (result.status == 1) {
 			doInitGroupOptions(result.data);
 			doInitProjectById();
 		} else {
@@ -31,14 +31,14 @@ function doInitGroupOptions(list){
 function doInitProjectById(){
    var prjId=$('#modifyDialog').data("checkedUpdateId");
 	var params={'prjId':prjId};
-	var url = basePath+'project/findById.do';
+	var url = '/project/findProjectById';
 	$.post(url,params,function(result){
-		if(result.state==SUCCESS){
+		if(result.status==1){
 			fillUpdateByIdForm(result.data)
 		}else{
 			alert(result.message);
 		}
-	})
+	});
 }
 //填充编辑页面表单
 function fillUpdateByIdForm(project){		
@@ -67,9 +67,9 @@ function fillUpdateByIdForm(project){
 function updateProject(){
 	if($('#editProjectForm').validate()){
 		var data = getFormParameters();
-		var url = basePath+'project/updateById.do';
+		var url = '/project/updateProject';
 		$.post(url,data,function(jsonResult){
-			if(jsonResult.state==SUCCESS){
+			if(jsonResult.status==1){
 				$('#modifyDialog').modal('hide');
 				doGetProjects();
 			}else{

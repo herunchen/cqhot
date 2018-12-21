@@ -5,9 +5,9 @@ doGetGroups();
 $('#modifyDialog').on('click','.ok',saveProject);
 /*获得组织机构部门列表*/
 function doGetGroups(){
- var url = basePath + 'project/findGroups.do';	
+ var url = '/project/getAllGroup';	
  $.getJSON(url, function(result){
-			if(result.state==SUCCESS){
+			if(result.status==1){
 				doUpdateGroupOptions(result.data);
 			}else{
 				alert(result.message);
@@ -58,9 +58,9 @@ function getFormParameters(){
 	
 //提交表单数据
 function commitForm(data){
-	var url = basePath+'project/save.do';
+	var url = '/project/addProject';
 	$.post(url,data,function(jsonResult){
-		if(jsonResult.state==SUCCESS){
+		if(jsonResult.status==1){
 			$('#modifyDialog').modal('hide');
 			doGetProjects();
 		}else{
