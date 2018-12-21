@@ -14,7 +14,7 @@ public class MessageCenter {
 	Release_time	        发布时间
 	isvalid            是否有效
 	Update_time        修改时间*/
-
+ 
 	private int message_id;
 	private int class_type;
 	private String send_user;
