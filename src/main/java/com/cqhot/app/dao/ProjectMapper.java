@@ -24,4 +24,6 @@ public interface ProjectMapper {
 	Project findProjectById(@Param("id") String id);
 	
 	int updateProject(@Param("p") Project project);
+	
+	int proImport(@Param("data") List<Project> data);
 }

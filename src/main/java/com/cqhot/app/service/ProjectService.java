@@ -21,4 +21,6 @@ public interface ProjectService {
 	public Result findProjectById(String id);
 	
 	public Result updateProject(Project project);
+	
+	public Result proImpot(List<Project> data);
 }

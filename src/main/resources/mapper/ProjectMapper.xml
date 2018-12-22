@@ -143,4 +143,24 @@
 		where 
 			id = #{p.id}
 	</update>
+	
+	<insert id="proImport" parameterType="java.util.List">
+		insert into 
+			product_projects 
+			(prjId ,prjName,deptId,beginDate,endDate,valid,note,createdTime,modifiedTime)
+		values
+		<foreach collection="data" item="d" index="index" separator=",">
+			(
+				#{d.prjId},
+				#{d.prjName},
+				#{d.deptId},
+				#{d.beginDate},
+				#{d.endDate},
+				#{d.valid},
+				#{d.note},
+				NOW(),
+				NOW()
+			)
+		</foreach>
+	</insert>
 </mapper>

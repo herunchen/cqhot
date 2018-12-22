@@ -1,16 +1,20 @@
 package com.cqhot.app.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.cqhot.app.entity.Organ;
 import com.cqhot.app.entity.Project;
 import com.cqhot.app.service.ProjectService;
+import com.cqhot.app.util.ExcelImportUtil;
 import com.cqhot.app.util.PageUtil;
 import com.cqhot.app.vo.Result;
 
@@ -62,5 +66,19 @@ public class ProjectController {
 	@RequestMapping("/project/updateProject")
 	public Result updateProject(Project project) {
 		return projectService.updateProject(project);
+	}
+	
+	@RequestMapping(value = "/project/excelImport",method = RequestMethod.POST)
+	public Result excelImport(MultipartFile excelFile) {
+		String[] field = new String[]{"prjId","prjName","deptId","beginDate","endDate","valid","note"};
+		Result res = new Result();
+		try {
+			ExcelImportUtil<Project> util = new ExcelImportUtil<Project>();
+			List<Project> list = util.getAllData(excelFile, Project.class, field);
+			res = projectService.proImpot(list);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return res;
 	}
 }

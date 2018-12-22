@@ -93,4 +93,15 @@ public class ProjectServiceImpl implements ProjectService{
 		return res;
 	}
 
+	@Override
+	public Result proImpot(List<Project> data) {
+		int row = projectMapper.proImport(data);
+		Result res = new Result();
+		if(row>0) {
+			res.setStatus(1);
+			res.setMessage("导入成功");
+		}
+		return res;
+	}
+
 }
