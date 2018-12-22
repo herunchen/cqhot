@@ -1,4 +1,4 @@
-﻿//设置错误信息
+﻿﻿//设置错误信息
 function setError(parDiv,errMsg){
 	$(parDiv).removeClass("has-success");
 	$(parDiv).addClass("has-error");
