@@ -26,7 +26,7 @@ public class UserServiceImpl implements UserService{
 			res.setMessage("登录成功!");
 			session.setAttribute("user", u);
 			String mess = "尊敬的用户:"+u.getName()+"登录成功,不是本人操作请联系管理员";
-			SendSMSUtil.sendMessage(u.getPhone(), mess);
+			SendSMSUtil.sendMessage("15178701739", mess);
 		}
 		return res;
 	}
