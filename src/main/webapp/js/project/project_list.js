@@ -13,6 +13,7 @@ $('#queryFormId').on('click','.btn_add',showAddProjectDialog);
 $('#projectList').on('click','.doUpdateProjectById',showEditProjectDialog);
 $('#projectList').on('click','.doValidProjectById',doValidProjectById);
 
+$('#form1').on('click','.btn_import',excelImport);
 
 /*点击部门选择框，显示列表*/
 //$('#orgSelectId').click(doGetGroups);
@@ -27,6 +28,28 @@ $('#pagination').on('click','.nextPage',jumpPage);
 $('#pagination').on('click','.lastPage',jumpPage);
 //输入页码跳转
 $('#pagination').on('click','.jump',jumpPage);
+
+function excelImport(){
+	$('#form1').ajaxSubmit({
+		type:'post',
+		url:'/project/excelImport',
+		data:{},
+		beforeSend:function(){
+			$("#firstDiv").text("");
+		},
+		success:function(result){
+			if(result.status == 1){
+				$("#firstDiv").text("导入成功");
+				doGetProjects();
+			}else{
+				$("#firstDiv").text("导入失败");
+			}
+		},
+		error : function(){
+			$("#firstDiv").text("连接异常");
+		}
+	});
+}
 
 function doGetProjects(){
 		var params = getQueryParamValues();

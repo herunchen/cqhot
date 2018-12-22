@@ -60,6 +60,14 @@
 				</div>
 			</div>
 		</form>
+		<form enctype="multipart/form-data" id="form1">
+				<input name="excelFile" type="file" /> 
+				<input id = "btnRequest" type="button" class="btn btn-primary btn_import" value="导入" />
+		</form>
+		<a href ="/model.xlsx">模版下载</a>
+		<div id="Div">
+		<div id="firstDiv"></div>
+	</div>
 	</div>
 	
 <c:url var="url" value="/js/project/project_list.js"></c:url>
