@@ -7,4 +7,6 @@ import com.cqhot.app.vo.Result;
 
 public interface UserService {
 	public Result findUserByUsername(HttpSession session ,User user);
+	
+	public Result loginByShiro(HttpSession session ,User user);
 }

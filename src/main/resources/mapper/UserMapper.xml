@@ -5,4 +5,7 @@
 	<select id="selectUserByName" parameterType="com.cqhot.app.entity.User" resultType="com.cqhot.app.entity.User">
 		select * from aut_users where username = #{username} and password = #{password}
 	</select>
+	<select id="shiroLogin" parameterType="java.lang.String" resultType="com.cqhot.app.entity.User">
+		select * from aut_users where username = #{username}
+	</select>
 </mapper>
