@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,11 +21,20 @@ public class ProjectServiceImpl implements ProjectService{
 	@Autowired
 	private ProjectMapper projectMapper;
 	
+	@Autowired
+	private AmqpTemplate amqpTemplate;
+	
 	@Override
 	public Map<String, Object> findProByPage(Project project,PageUtil page) {
+		//查询总数
 		int rowCounts = projectMapper.getTotPage(project);
+		//分页查询project对象 返回list
 		List<Map<String,Object>> list = projectMapper.findProByPage(project, page);
+		//将list对象放入mq队列
+		amqpTemplate.convertAndSend("directExchange","qu01",list);
+		//给page对象设值
 		page.setRowCount(rowCounts);
+		//设置返回结果集
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("list", list);
 		map.put("pageObj", page);
