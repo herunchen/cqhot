@@ -69,14 +69,14 @@ body {
 	</div>
 	<div class="box">
 		<div class="content">
-			<form method="post" action="/login"
+			<form method="post" action="/user/login"
 				class="form-vertical login-form" name="loginForm" id="loginForm">
 				<h3 class="form-title" style="color: white;">登 录</h3>
 
 				<div class="form-group">
 					<div class="input-icon">
 						<i class="icon-user"> </i> <input type="text" id="username"
-							name="userName" class="form-control" placeholder="用户名"
+							name="username" class="form-control" placeholder="用户名"
 							autofocus="autofocus" maxlength="20" value="" />
 					</div>
 				</div>
@@ -128,7 +128,8 @@ body {
 			//不能将明文密码保存在cookie中，不安全
 			//setCookie('cookUser', inUser, time, '/');//set 获取用户名和密码 传给cookie
 			//setCookie('cookPass', inPass, time, '/');
-
+			alert(inUser);
+			alert(inPass);
 			$("#loginForm").submit();
 		})
 		//回车按钮
