@@ -128,8 +128,6 @@ body {
 			//不能将明文密码保存在cookie中，不安全
 			//setCookie('cookUser', inUser, time, '/');//set 获取用户名和密码 传给cookie
 			//setCookie('cookPass', inPass, time, '/');
-			alert(inUser);
-			alert(inPass);
 			$("#loginForm").submit();
 		})
 		//回车按钮
