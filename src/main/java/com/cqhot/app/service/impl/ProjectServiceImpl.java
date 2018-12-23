@@ -6,6 +6,8 @@ import java.util.Map;
 
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.stereotype.Service;
 
 import com.cqhot.app.dao.ProjectMapper;
@@ -24,12 +26,39 @@ public class ProjectServiceImpl implements ProjectService{
 	@Autowired
 	private AmqpTemplate amqpTemplate;
 	
+	@Autowired
+	private RedisTemplate<Object, Object> redisTemplate;
+	
 	@Override
 	public Map<String, Object> findProByPage(Project project,PageUtil page) {
 		//查询总数
 		int rowCounts = projectMapper.getTotPage(project);
-		//分页查询project对象 返回list
-		List<Map<String,Object>> list = projectMapper.findProByPage(project, page);
+		
+		List<Project> list = null;
+		
+		//设置key的序列化方式,采用字符串方式,可读性好
+		this.redisTemplate.setKeySerializer(new StringRedisSerializer());
+		//先从redis缓存中查询是否有指定key的缓存数据
+		list=(List<Project>)redisTemplate.opsForValue().get("allPro");
+		//双重检测,双重校验锁
+		if(list == null || list.size() == 0) {
+			synchronized (this) {
+				//从redis获取数据
+				list =  (List<Project>) redisTemplate.opsForValue().get("allPro");
+				//说明redis指定key的缓存数据不存在
+				if(list == null) {
+					//去数据库查询
+					list = projectMapper.findProByPage(project, page);
+					//将数据库查询出的数据放入redis缓存中
+					redisTemplate.opsForValue().set("allPro",list);
+				}else {
+					System.out.println("查询缓存");
+				}
+			}
+		}else {
+			System.out.println("查询缓存");
+		}
+		
 		//将list对象放入mq队列
 		amqpTemplate.convertAndSend("directExchange","qu01",list);
 		//给page对象设值

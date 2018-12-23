@@ -13,7 +13,7 @@ public interface ProjectMapper {
 	
 	int getTotPage(@Param(value="project") Project project);
 	
-	List<Map<String,Object>> findProByPage(@Param(value = "project") Project project,@Param(value = "page") PageUtil page);
+	List<Project> findProByPage(@Param(value = "project") Project project,@Param(value = "page") PageUtil page);
 	
 	List<Organ> getAllGroup();
 	
