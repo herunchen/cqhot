@@ -33,32 +33,7 @@ public class ProjectServiceImpl implements ProjectService{
 	public Map<String, Object> findProByPage(Project project,PageUtil page) {
 		//查询总数
 		int rowCounts = projectMapper.getTotPage(project);
-		
-		List<Project> list = null;
-		
-		//设置key的序列化方式,采用字符串方式,可读性好
-		this.redisTemplate.setKeySerializer(new StringRedisSerializer());
-		//先从redis缓存中查询是否有指定key的缓存数据
-		list=(List<Project>)redisTemplate.opsForValue().get("allPro");
-		//双重检测,双重校验锁
-		if(list == null || list.size() == 0) {
-			synchronized (this) {
-				//从redis获取数据
-				list =  (List<Project>) redisTemplate.opsForValue().get("allPro");
-				//说明redis指定key的缓存数据不存在
-				if(list == null) {
-					//去数据库查询
-					list = projectMapper.findProByPage(project, page);
-					//将数据库查询出的数据放入redis缓存中
-					redisTemplate.opsForValue().set("allPro",list);
-				}else {
-					System.out.println("查询缓存");
-				}
-			}
-		}else {
-			System.out.println("查询缓存");
-		}
-		
+		List<Project> list = projectMapper.findProByPage(project, page);
 		//将list对象放入mq队列
 		amqpTemplate.convertAndSend("directExchange","qu01",list);
 		//给page对象设值
@@ -72,7 +47,30 @@ public class ProjectServiceImpl implements ProjectService{
 
 	@Override
 	public List<Organ> getAllGroup() {
-		return projectMapper.getAllGroup();
+		List<Organ> list = null;
+		//设置key的序列化方式,采用字符串方式,可读性好
+		this.redisTemplate.setKeySerializer(new StringRedisSerializer());
+		//先从redis缓存中查询是否有指定key的缓存数据
+		list = (List<Organ>)redisTemplate.opsForValue().get("allOrgan");
+		//双重检测,双重校验锁
+		if(list == null || list.size() == 0) {
+			synchronized (this) {
+				//从redis获取数据
+				list = (List<Organ>)redisTemplate.opsForValue().get("allOrgan");
+				//说明redis指定key的缓存数据不存在
+				if(list == null || list.size() == 0) {
+					//去数据库查询
+					list = projectMapper.getAllGroup();
+					//将数据库查询出的数据放入redis缓存中
+					redisTemplate.opsForValue().set("allOrgan", list);
+				}else {
+					System.out.println("查询缓存");
+				}
+			}
+		}else {
+			System.out.println("查询缓存");
+		}
+		return list;
 	}
 
 	@Override
