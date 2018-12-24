@@ -9,9 +9,9 @@ $('#modifyDialog').on('hidden.bs.modal', function () {
 function saveFormData(){
 	if($('#addObjectForm').validate()){
 		var data = getFormParameters();
-		var url = basePath+'org/save.do';
+		var url = '/org/save';
 		$.post(url,data,function(jsonResult){
-			if(jsonResult.state==SUCCESS){
+			if(jsonResult.status==1){
 				$('#modifyDialog').modal('hide');
 				doGetObjects();
 			}else{

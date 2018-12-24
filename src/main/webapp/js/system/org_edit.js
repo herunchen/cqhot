@@ -8,9 +8,9 @@ $('#modifyDialog').on('click','.ok',updateFormData);
 function doInitObjectById(){
     var id=$('#modifyDialog').data("checkedUpdateId");
 	var params={'id':id};
-	var url = basePath+'org/findById.do';
+	var url = '/org/getOrgById';
 	$.post(url,params,function(result){
-		if(result.state==SUCCESS){
+		if(result.status==1){
 			fillUpdateByIdForm(result.data)
 		}else{
 			alert(result.message);
@@ -28,9 +28,9 @@ function fillUpdateByIdForm(obj){
 function updateFormData(){
 	if($('#editObjectForm').validate()){
 		var data = getFormParameters();
-		var url = basePath+'org/update.do';
+		var url ='/org/edit';
 		$.post(url,data,function(jsonResult){
-			if(jsonResult.state==SUCCESS){
+			if(jsonResult.status==1){
 			$('#modifyDialog').modal('hide');
 			doGetObjects();
 			}else{

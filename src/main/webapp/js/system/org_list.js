@@ -37,9 +37,9 @@ function doGetObjects(){
 			params.pageCurrent = currentPage;
 		}
 		
-         var url =basePath+'org/findObjects.do';
+         var url ='/org/findOrg';
 		$.post(url,params,function(result){
-			if(result.state==SUCCESS){
+			if(result.status==1){
 				initPage();
 				fillObjectList(result.data.list);
 				showPagination(result.data.pageObj);
@@ -134,7 +134,7 @@ function getQueryParamValues(){
     function showAddDialog(){
     	var parentId=$('#queryFormId').data('parentId');
     	$('#modifyDialog').data('parentId',parentId);
-    	$('#modifyDialog .modal-body').load(basePath+'org/addUI.do',function(){
+    	$('#modifyDialog .modal-body').load('/ttms/system/organization_add.jsp',function(){
 	        $('#modifyDialog').modal('show');
 			$('#modifyDialog .modal-title').html('添加信息');
     	})
@@ -143,7 +143,7 @@ function getQueryParamValues(){
     function showEditDialog(){
     	var id = $(this).parent().parent().data('id');
     	$('#modifyDialog').data('checkedUpdateId',id);
-    	$('#modifyDialog .modal-body').load(basePath+'org/editUI.do',function(){
+    	$('#modifyDialog .modal-body').load('/ttms/system/organization_edit.jsp',function(){
 	        $('#modifyDialog').modal('show');
 			$('#modifyDialog .modal-title').html('编辑信息');
 			
