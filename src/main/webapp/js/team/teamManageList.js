@@ -217,11 +217,11 @@ function loadTeamList(){
 	if(currentPage){
 		params.PageCurrent = currentPage;
 	}
-	var url = basePath + 'team/teamList.do';
+	var url = '/team/getTeam';
 	$.post(url,params,function(result){
-		if(result.state==SUCCESS){
+		if(result.status==1){
 			initPage();
-			fillTeamListTable(result.data.teamList);
+			fillTeamListTable(result.data.list);
 			showPagination(result.data.pageObj);
 		}else{
 			alert(result.message);

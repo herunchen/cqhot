@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cqhot.app.dao.SupplierMapper">
+	<select id="findSupByPage" resultType="map" parameterType="com.cqhot.app.entity.Supplier">
+		SELECT
+			s.id,
+		    s.compId,
+		    s.indCatg,
+		    s.type,
+		    s.name,
+		    s.valid,
+		    s.phone,
+		    s.homePage,
+		    s.country,
+		    s.province,
+		    s.city,
+		    s.createdUser,
+		    s.createdTime,
+		    s.modifiedUser,
+		    s.modifiedTime
+		FROM
+		    res_companies s
+		<where>
+		   1=1
+			<if test="null != supplier.compId and  supplier.compId!=''">
+				AND s.compId like CONCAT('%',#{supplier.compId},'%')
+			</if>
+			<if test="null != supplier.indCatg and  supplier.indCatg!=''">
+				AND s.indCatg like CONCAT('%',#{supplier.indCatg},'%')
+			</if>
+			<if test="null != supplier.name and supplier.name !=''">
+				AND s.name = #{supplier.name}
+			</if>
+            <if test="null != supplier.country and supplier.country!='' ">
+                AND s.country = #{supplier.country}
+            </if>
+            <if test="null != supplier.province and supplier.province!='' ">
+                AND s.province = #{supplier.province}
+            </if>
+            <if test="null != supplier.city and supplier.city!='' ">
+                AND s.city = #{supplier.city}
+            </if>
+		</where>
+		    ORDER BY  s.createdTime DESC 
+		<if test="page!=null and page.pageSize != 0 and page.pageSize != null">
+			LIMIT #{page.startIndex},#{page.pageSize}
+		</if>
+	</select>
+	
+	<select id="getTotPage" parameterType="com.cqhot.app.entity.Supplier" resultType="java.lang.Integer">
+		SELECT  count(*)
+		FROM    res_companies s
+		<where>
+		   1=1
+			<if test="null != supplier.compId and  supplier.compId!=''">
+				AND s.compId like CONCAT('%',#{supplier.compId},'%')
+			</if>
+			<if test="null != supplier.indCatg and  supplier.indCatg!=''">
+				AND s.indCatg like CONCAT('%',#{supplier.indCatg},'%')
+			</if>
+			<if test="null != supplier.name and supplier.name !=''">
+				AND s.name = #{supplier.name}
+			</if>
+            <if test="null != supplier.country and supplier.country!='' ">
+                AND s.country = #{supplier.country}
+            </if>
+            <if test="null != supplier.province and supplier.province!='' ">
+                AND s.province = #{supplier.province}
+            </if>
+            <if test="null != supplier.city and supplier.city!='' ">
+                AND s.city = #{supplier.city}
+            </if>
+		</where>
+	</select>
+	
+	
+    	<update id="updateValid"> 
+    		update res_companies set valid = #{valid} where id = #{compId} 
+    	</update> 
+	
+
+	
+
+</mapper>

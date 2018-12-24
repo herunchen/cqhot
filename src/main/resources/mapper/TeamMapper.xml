@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cqhot.app.dao.TeamMapper">
+	<select id="getTeamByPage"  resultType="com.cqhot.app.entity.Team">
+		select
+			pt.id,
+			tName,
+			pp.prjName,
+			au.name as managerName,
+			au.phone,
+			pt.valid,
+			pt.note
+		from
+			product_teams pt,product_projects pp,aut_users au
+		where
+			pt.prjId = pp.id
+		and
+			pt.managerId = au.id
+		<if test="team!=null and team.tName!=null and team.tName!=''">
+			and pt.tName LIKE CONCAT('%',#{team.tName},'%')
+		</if>
+		<if test="team!=null and team.valid!=null">
+			and pt.valid = #{team.valid}
+		</if>
+		ORDER BY
+			pt.modifiedTime DESC
+		<if test="pageObj!=null and pageObj.pageSize != 0 and pageObj.pageSize != null">
+			LIMIT #{pageObj.startIndex},#{pageObj.pageSize}
+		</if>
+	</select>
+	
+	<select id="getRowCounts" resultType="java.lang.Integer">
+		select 
+			count(*)
+		from
+			product_teams
+		<where>
+			1=1
+			<if test="team!=null and team.tName!=null and team.tName!=''">
+			and tName LIKE CONCAT('%',#{team.tName},'%')
+		</if>
+		<if test="team!=null and team.valid!=null">
+			and valid = #{team.valid}
+		</if>
+		</where>
+			
+	</select>
+	
+</mapper>
