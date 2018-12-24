@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cqhot.app.dao.OrgMapper">
+	<select id="getTotPage" parameterType="com.cqhot.app.entity.Organ" resultType="java.lang.Integer">
+		SELECT  count(*)
+		FROM   aut_organizations o
+	   <where>
+	        1=1
+			 <!-- 机构名称 -->
+			<if test="org.name!=null and org.name!=''">
+				AND o.name like CONCAT('%',#{org.name},'%')
+			</if>
+			 <!-- 状态 -->
+            <if test="null != org.parentId and org.parentId!='' ">
+                AND o.parentId = #{org.parentId}
+            </if>
+			  <!-- 状态 -->
+            <if test="null != org.valid and org.valid!='' ">
+                AND o.valid = #{org.valid}
+            </if>
+	   </where>
+	</select>
+	
+	<select id="findProByPage" resultType="com.cqhot.app.entity.Organ">
+		SELECT
+		    id,
+		    name,
+		    code,
+		    parentId,
+		    note,
+		    valid,
+		    createdUser,
+		    createdTime,
+		    modifiedUser,
+		    modifiedTime
+		FROM
+		    aut_organizations  o
+	   <where>
+	        1=1
+			 <!-- 机构名称 -->
+			<if test="org.name!=null and org.name!=''">
+			AND o.name like CONCAT('%',#{org.name},'%')
+			</if>
+			 <!-- 状态 -->
+            <if test="null != org.parentId and org.parentId!='' ">
+            AND o.parentId = #{org.parentId}
+            </if>
+			  <!-- 状态 -->
+            <if test="null != org.valid and org.valid!='' ">
+            AND o.valid = #{org.valid}
+            </if>
+	   </where>
+	    ORDER BY  createdTime DESC 
+		<if test="page!=null and page.pageSize != 0">
+		LIMIT #{page.startIndex},#{page.pageSize}
+		</if>
+	</select>
+	
+	<insert id="addOrgan" parameterType="com.cqhot.app.entity.Organ">
+		INSERT INTO aut_organizations
+		    (
+		    id,
+			name,
+			code,
+			parentId,
+			note,
+			createdUser,
+			createdTime,
+			modifiedUser,
+			modifiedTime)
+		VALUES
+		    (
+		    null,
+		    #{org.name},
+		    #{org.code},
+		    #{org.parentId},
+		    #{org.note},
+		    #{org.createdUser},
+		    NOW(),
+		    #{org.modifiedUser},
+		    NOW())
+	</insert>
+	<select id="getOrgById" parameterType="java.lang.String" resultType="com.cqhot.app.entity.Organ">
+		select * from aut_organizations where id = #{id}
+	</select>
+	
+	<update id="editOrgan" parameterType="com.cqhot.app.entity.Organ">
+		update aut_organizations set name = #{org.name},code = #{org.code} where id = #{org.id}
+	</update>
+</mapper>
